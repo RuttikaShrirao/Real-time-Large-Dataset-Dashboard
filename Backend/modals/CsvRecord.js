@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const csvSchema   = new mongoose.Schema({
   Date: String,
+  Role: String,
   Open: Number,
   High: Number,
   Low: Number,
