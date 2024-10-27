@@ -15,11 +15,9 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-
-router.post("/:role", (req, res) => {
+router.post("/", (req, res) => {
   upload.single("file")(req, res, (err) => {
     try {
-
       if (err) {
         console.error("Multer error:", err); // Log the error for debugging
         return res.status(500).json({ error: "File upload failed." });
@@ -32,7 +30,7 @@ router.post("/:role", (req, res) => {
       io.on("connection", (socket) => {
         console.log("a user connected", socket.id);
       });
-      console.log("socket io............")
+      console.log("socket io............");
 
       const records = [];
       const readableStream = new Readable();
@@ -71,7 +69,5 @@ router.post("/:role", (req, res) => {
     console.log("uploaded");
   });
 });
-
-// router.get('/get-stocks-List', getStocksList);
 
 module.exports = router;
