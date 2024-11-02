@@ -2,25 +2,27 @@ import "server-only";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 
-const secretKey = process.env.SESSION_SECRET;
+const secretKey = process.env.COOKIE_SECRET;
+
 const encodedKey = new TextEncoder().encode(secretKey);
 
-export async function createSession(userId) {
+// set cookie if user is authenticated
+export async function createCookie(userId) {
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
   const session = await encrypt({ userId, expiresAt });
-console.log(userId,"userid")
   cookies().set("session", session, {
     httpOnly: true,
     secure: true,
     expires: expiresAt,
   });
-  console.log(userId,"userid")
 }
+
+// delete cookie
 export async function deleteSession() {
   cookies().delete("session");
 }
 
-
+// Encryption
 export async function encrypt(payload) {
   return new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
@@ -28,10 +30,10 @@ export async function encrypt(payload) {
     .setExpirationTime("7d")
     .sign(encodedKey);
 }
-
-export async function decrypt(session) {
+// Decreption
+export async function decrypt(cookie) {
   try {
-    const { payload } = await jwtVerify(session, encodedKey, {
+    const { payload } = await jwtVerify(cookie, encodedKey, {
       algorithms: ["HS256"],
     });
     return payload;

@@ -4,7 +4,7 @@ import AdminView from '../components/AdminView';
 import ManagerView from '../components/ManagerView';
 import UserView from '../components/UserView';
 
-const Dashboard = () => {
+const RoleBaseView = () => {
   const router = useRouter();
   const { role } = router.query;
   const [userRole, setUserRole] = useState(null);
@@ -18,4 +18,4 @@ const Dashboard = () => {
   return <UserView />;
 };
 
-export default Dashboard;
+export default RoleBaseView;

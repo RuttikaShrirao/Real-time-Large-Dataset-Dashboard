@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { createSession, deleteSession } from "../lib/session";
+import { createCookie, deleteSession } from "./lib/session";
 import { redirect } from "next/navigation";
 
 const testUser = {
@@ -27,8 +27,8 @@ export async function login(prevState, formData) {
     };
   }
 
+  // check user authentication
   const { email, password } = result.data;
-
   if (email !== testUser.email || password !== testUser.password) {
     return {
       errors: {
@@ -37,12 +37,14 @@ export async function login(prevState, formData) {
     };
   }
 
-  await createSession(testUser.id);
+  // AFTER validation ,set cookie function call
+  await createCookie(testUser.id);
 
   redirect("/dashboard");
 }
 
+// delete cookie
 export async function logout() {
   await deleteSession();
-  redirect("/login");
+  redirect("/");
 }
