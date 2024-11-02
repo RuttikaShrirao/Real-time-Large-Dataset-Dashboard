@@ -26,3 +26,172 @@ body {
     padding: 4em 3em;
     box-sizing: border-box;
 }
+
+
+/* display none */
+.displayToggle{
+  display:none;
+}
+
+/* sidebar */
+
+.sidebar{
+  width: 14rem;
+flex-shrink: 0;
+background-color: var(--White);
+transition: all .5s;
+padding-right: 2rem;
+}
+
+.sidebar-small{
+  width: 5rem;
+  background-color:var(--White);
+  transition: all .7s;
+}
+
+.header-sidebar{
+  display: flex;
+  align-items: center;
+}
+
+.logo-img{
+  margin: .5rem;
+}
+
+.brandName{
+  font-size: 150%;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  margin-left: 1rem;
+}
+
+.menuIcons{
+  position:relative; 
+  left:20%;
+  color: var(--Greys-Blue-Grey-900);
+}
+
+/* menu */
+.sidebarMenu{
+  display: flex;
+/* height: 54px; */
+margin-left: .2rem;
+padding: .1rem;
+align-items: center;
+gap: 1.5rem;
+flex-shrink: 0;
+border-radius: 16px;
+}
+
+
+
+
+/* navbar */
+.navbar{
+  display: flex;
+  height: fit-content;
+  padding: .5rem;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--White);
+  }
+
+
+  .adminIfo{
+    text-align: center;
+   text-align: right ;
+    top: 100px;
+    align-items: center;
+  }
+
+  .navbarCurrentPage{
+  color: var(--Greys-Blue-Grey-900);
+font-family: Poppins;
+font-size: 2rem;
+font-weight: 600;
+  }
+
+
+  /* herosection */
+.herosection{
+  /* width: 100%; */
+  border: 1px solid var(--Greys-Blue-Grey-300);
+background: #FAFBFC;
+}
+
+@media screen and (max-width: 1024px) {
+  .brandName{
+    display: none;
+  }
+
+  .sidebar{
+    width: 4rem;
+    transition: all .5s;
+  }
+
+  .sidebar-small{
+    transition: all .7s;
+    width: 15rem;
+    height: 100%;
+  }
+
+  .displayToggle{
+    display: block;
+  }
+
+  .logo-img{
+    height: 40px;
+    width: 40px;
+  }
+/* navbar */
+  .navbarCurrentPage{
+  font-size: 1.5rem;
+  /* padding: 2%; */
+
+}
+
+.navProfile{
+  width: 35%;
+}
+
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .menuIcons{
+    display: none;
+  }
+.brandName{
+  display: none;
+}
+
+.sidebar{
+  transition: all .5s;
+  /* height: 100%; */
+  /* width: 4rem; */
+}
+.sidebarName{
+  display: none;
+}
+.displayToggle{
+  display: block;
+}
+
+.sidebar-small{
+  transition: all .7s;
+  /* height: 100%; */
+}
+}
+
+
+  @media screen and (max-width: 520px) {
+    .navProfile{
+      width: 53%;
+    }
+    .navbarCurrentPage{
+      font-size: 1.3rem;
+    
+    }
+  }

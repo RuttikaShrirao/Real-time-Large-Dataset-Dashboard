@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useState} from 'react';
 import { io } from 'socket.io-client';
-import { LoginForm } from './login/LoginForm';
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
@@ -24,14 +23,17 @@ export default function Home() {
   // usestate
   const [showPassword, setShowPassword] = useState(false);
 
-   useEffect(() => {
-    const socket = io('http://localhost:5000');   
-    socket.on('updateData', (data) => {
-      console.log('Received real-time data:', data);
-      // Update state here to reflect in the UI
-    });
-    return () => socket.disconnect();
-  }, []);
+
+  //  useEffect(() => {
+  //   const socket = io('http://localhost:5000');   
+  //   socket.on('updateData', (data) => {
+  //     console.log('Received real-time data:', data);
+  //     // Update state here to reflect in the UI
+  //   });
+  //   return () => socket.disconnect();
+  // }, []);
+
+
   return (
     // authentication handle here
     <div className="form  mt-14">
@@ -44,6 +46,7 @@ export default function Home() {
           type="text"
           id="email"
           name="email"
+
         />
       </FormControl>
       {state?.errors?.email && (

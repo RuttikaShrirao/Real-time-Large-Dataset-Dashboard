@@ -10,6 +10,12 @@ const testUser = {
   password: "12345678",
 };
 
+// req to backend to authenticate user
+// const resuilt=fetch("http://localhost:5000/api/login",
+// {
+//   "method":"post"
+// })
+
 const loginSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }).trim(),
   password: z
@@ -29,6 +35,7 @@ export async function login(prevState, formData) {
 
   // check user authentication
   const { email, password } = result.data;
+
   if (email !== testUser.email || password !== testUser.password) {
     return {
       errors: {
